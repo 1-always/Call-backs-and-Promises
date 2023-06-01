@@ -48,3 +48,31 @@ const person3PromiseToShowTicketWhenWifeArrives = new Promise((resolve, reject) 
 console.log('person2 shows ticket');
  main();
  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//Promise.all
+
+console.log('person1 shows ticket');
+console.log('person2 shows ticket');
+async function main(){
+const person3PromiseToShowTicketWhenWifeArrives = new Promise((resolve, reject) => {
+    setTimeout(() => resolve('ticket'), 1000);
+  });
+  const getPopcorn =  new Promise((resolve, reject) => {
+		setTimeout(() => resolve('popcorn'), 1000);
+  });
+  
+  const addButter =  new Promise((resolve, reject) => {
+		setTimeout(() => resolve('butter'), 1000);
+  });
+ const getColdDrinks =new Promise((resolve,reject)=>{
+  setTimeout(()=>{
+    resolve('colddrinks')},1000);
+ });
+ 
+  await person3PromiseToShowTicketWhenWifeArrives;
+  console.log("tickets got")
+  let [p,b,c]=await Promise.all([getPopcorn,addButter,getColdDrinks])
+  console.log(p+" "+b+" "+" "+c);
+ }
+ main();
+ 
